@@ -65,6 +65,14 @@ class Request implements BraspagMagentoRequestInterface, BraspaglibRequestInterf
         return $this->getConfig()->getIsTestEnvironment();
     }
 
+    /**
+     * @return string
+     */
+    public function getEnvironment()
+    {
+        return $this->getConfig()->getEnvironment();
+    }
+
     public function getCustomerName()
     {
     	return $this->getBillingAddress()->getFirstname() . ' ' . $this->getBillingAddress()->getLastname();
