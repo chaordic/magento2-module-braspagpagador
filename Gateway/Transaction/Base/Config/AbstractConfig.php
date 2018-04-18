@@ -16,6 +16,12 @@ abstract class AbstractConfig
 {
     const CONFIG_XML_BRASPAG_PAGADOR_GLOBAL_TEST_MODE = 'webjump_braspag/pagador/test_mode';
 
+    /**
+     * ENVIRONMENT global config
+     * @const string
+     */
+    const CONFIG_XML_BRASPAG_PAGADOR_GLOBAL_ENVIRONMENT = 'webjump_braspag/pagador/environment';
+
     protected $config;
 	protected $context;
 
@@ -71,5 +77,13 @@ abstract class AbstractConfig
     protected function getDateTime()
     {
         return $this->getContext()->getDateTime();
+    }
+
+    /**
+     * @return string
+     */
+    public function getEnvironment()
+    {
+        return $this->_getConfig(self::CONFIG_XML_BRASPAG_PAGADOR_GLOBAL_ENVIRONMENT);
     }
 }

@@ -84,6 +84,14 @@ class Request implements BraspagMagentoRequestInterface, BraspaglibRequestInterf
     }
 
     /**
+     * @return string
+     */
+    public function getEnvironment()
+    {
+        return $this->getConfig()->getEnvironment();
+    }
+
+    /**
      * @return mixed
      */
     public function getMerchantOrderId()

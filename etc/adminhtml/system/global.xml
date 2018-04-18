@@ -13,12 +13,11 @@
 	        <comment>Public key for Double Authentication Braspag. Contact Braspag to get your own merchant id.</comment>
 	        <config_path>webjump_braspag/pagador/merchant_key</config_path>
 	    </field>
-        <field id="test_mode" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="select">
-            <label>Test Mode Active</label>
-            <comment />
-            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-            <config_path>webjump_braspag/pagador/test_mode</config_path>
-        </field>
+		<field id="environment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="select">
+			<label>Environment</label>
+			<source_model>Webjump\BraspagPagador\Model\Source\Environment</source_model>
+			<config_path>webjump_braspag/pagador/environment</config_path>
+		</field>
 		<field id="return_url" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
 			<label>Return URL</label>
 			<comment />
