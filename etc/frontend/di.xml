@@ -30,16 +30,6 @@
         </arguments>
     </virtualType>
 
-    <!-- Credit Card -->
-
-    <virtualType name="BraspagTransactionCreditCardUiConfigProvider" type="Magento\Payment\Model\CcGenericConfigProvider">
-        <arguments>
-            <argument name="methodCodes" xsi:type="array">
-                <item name="braspag_pagador_creditcard" xsi:type="const">Webjump\BraspagPagador\Model\Payment\Transaction\CreditCard\Ui\ConfigProvider::CODE</item>
-            </argument>
-        </arguments>
-    </virtualType>
-
     <!-- Credit Card Installments -->
 
     <virtualType name="BraspagTransactionCreditCardInstallmentsBuilder" type="Webjump\BraspagPagador\Gateway\Transaction\Base\Resource\Installments\Builder" />
@@ -62,14 +52,6 @@
             <argument name="code" xsi:type="const">\Webjump\BraspagPagador\Model\Payment\Transaction\CreditCard\Ui\ConfigProvider::CODE</argument>
             <argument name="silentorderPostBuilder" xsi:type="object">\Webjump\BraspagPagador\Gateway\Transaction\Base\Resource\SilentOrderPost\Builder</argument>
             <argument name="silentOrderPostConfig" xsi:type="object">BraspagTransactionCreditCardSilentOrderPostConfig</argument>            
-        </arguments>
-    </virtualType>
-
-    <virtualType name="BraspagTransactionDebitCardOrderUiConfigProvider" type="Magento\Payment\Model\CcGenericConfigProvider">
-        <arguments>
-            <argument name="methodCodes" xsi:type="array">
-                <item name="braspag_pagador_debitcard" xsi:type="const">Webjump\BraspagPagador\Model\Payment\Transaction\DebitCard\Ui\ConfigProvider::CODE</item>
-            </argument>
         </arguments>
     </virtualType>
 
@@ -100,17 +82,26 @@
 
     <!-- Config Ui Provider -->
 
+    <type name="Magento\Payment\Model\CcGenericConfigProvider">
+        <arguments>
+            <argument name="methodCodes" xsi:type="array">
+                <item name="braspag_pagador_creditcard" xsi:type="const">\Webjump\BraspagPagador\Model\Payment\Transaction\CreditCard\Ui\ConfigProvider::CODE</item>
+                <item name="braspag_pagador_debitcard" xsi:type="const">\Webjump\BraspagPagador\Model\Payment\Transaction\DebitCard\Ui\ConfigProvider::CODE</item>
+            </argument>
+        </arguments>
+    </type>
+
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
                 <item name="braspag_pagador_base_config_provider" xsi:type="object">\Webjump\BraspagPagador\Model\Payment\Transaction\Base\Ui\ConfigProvider</item>
                 <item name="braspag_pagador_billet_config_provider" xsi:type="object">BraspagTransactionBilletUiConfigProvider</item>
-                <item name="braspag_pagador_creditcard_config_provider" xsi:type="object">BraspagTransactionCreditCardUiConfigProvider</item>
+                <item name="braspag_pagador_creditcard_config_provider" xsi:type="object">\Webjump\BraspagPagador\Model\Payment\Transaction\CreditCard\Ui\ConfigProvider</item>
                 <item name="braspag_pagador_creditcard_default_config_provider" xsi:type="object">\Webjump\BraspagPagador\Model\Payment\Transaction\CreditCard\Ui\ConfigProvider</item>
                 <item name="braspag_pagador_creditcard_installments_config_provider" xsi:type="object">BraspagTransactionCreditCardInstallmentsUiConfigProvider</item>
                 <item name="braspag_pagador_creditcard_silentorderpost_config_provider" xsi:type="object">BraspagTransactionCreditCardSilentOrderPostUiConfigProvider</item>               
                 <item name="braspag_pagador_creditcard_token_config_provider" xsi:type="object">BraspagPagadorModelPaymentTransactionCreditCardTokenUiConfigProvider</item>
-                <item name="braspag_pagador_debitcard_config_provider" xsi:type="object">BraspagTransactionDebitCardOrderUiConfigProvider</item>
+                <item name="braspag_pagador_debitcard_config_provider" xsi:type="object">\Webjump\BraspagPagador\Model\Payment\Transaction\DebitCard\Ui\ConfigProvider</item>
                 <item name="braspag_pagador_debitcard_default_config_provider" xsi:type="object">\Webjump\BraspagPagador\Model\Payment\Transaction\DebitCard\Ui\ConfigProvider</item>
             </argument>
         </arguments>
